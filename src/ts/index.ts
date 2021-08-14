@@ -29,7 +29,6 @@ let isPaused: boolean = true
 window.onclick = () => {
   if (isPaused) {
     isPaused = false
-    app.resize()
     app.run()
   } else {
     isPaused = true
