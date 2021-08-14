@@ -20,7 +20,7 @@ export class Scene {
     return this._activeLineLastIndex
   }
 
-  constructor (poolCircle: Circle[], templateLine: Line = Line.CreateDefault()) {
+  constructor (poolCircle: Circle[], templateLine: Line) {
     this._poolCircle = poolCircle
     this._poolLine = []
     this._activeLineLastIndex = 0
@@ -43,7 +43,12 @@ export class Scene {
     this._activeLineLastIndex = 0
   }
 
-  static Generate (circleCount: number, boundaries: Boundaries): Scene {
+  static Generate (
+    circleCount: number,
+    boundaries: Boundaries,
+    templateCircleColor: Rgba,
+    templateLineColor: Rgba
+  ): Scene {
     const circlePool: Circle[] = []
     const randomInRange = (min: number, max: number): number => Math.random() * (max - min + 1) + min
     const randomDirection = (): number => Math.round(Math.random()) * -2 + 1
@@ -56,11 +61,11 @@ export class Scene {
           4,
           randomInRange(0.1, 0.5) * randomDirection(),
           randomInRange(0.1, 0.5) * randomDirection(),
-          new Rgba(0, 0, 0, 1)
+          templateCircleColor.copy()
         )
       )
     }
 
-    return new Scene(circlePool)
+    return new Scene(circlePool, new Line(0, 0, 0, 0, templateLineColor))
   }
 }

@@ -15,7 +15,7 @@ export class SceneUpdateSystem {
   private _boundaries: Boundaries
   private _lineMaxLength: number
 
-  constructor (boundaries: Boundaries, scene: Scene, lineMaxLength: number = 200) {
+  constructor (boundaries: Boundaries, scene: Scene, lineMaxLength: number) {
     this._boundaries = boundaries
     this._scene = scene
     this._lineMaxLength = lineMaxLength

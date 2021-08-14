@@ -1,4 +1,10 @@
-export class Rgba {
+export interface IRgb {
+  r: number
+  g: number
+  b: number
+}
+
+export class Rgba implements IRgb {
   private _r: number
   private _g: number
   private _b: number
@@ -59,5 +65,9 @@ export class Rgba {
 
   copy (): Rgba {
     return new Rgba(this._r, this._g, this._b, this._a)
+  }
+
+  static CreateDefault (): Rgba {
+    return new Rgba(0, 0, 0, 1)
   }
 }
